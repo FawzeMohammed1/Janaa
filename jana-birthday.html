@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hey, Jana 🤍</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Tajawal:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{--rose:#c8a0a0;--blush:#f5e6e6;--deep:#1a0f0f;--wine:#8b3a3a;--cream:#fdf8f5;--soft:#e8d0d0;--gold:#c9a96e}
+html{scroll-behavior:smooth}
+body{background:var(--cream);font-family:'Tajawal',sans-serif;color:var(--deep);min-height:100vh;overflow-x:hidden}
+.floaters{position:fixed;inset:0;pointer-events:none;z-index:0;overflow:hidden}
+.floater{position:absolute;font-size:1.5rem;animation:floatUp linear infinite;opacity:0;bottom:-60px;user-select:none}
+@keyframes floatUp{0%{transform:translateY(0) rotate(0deg);opacity:0}10%{opacity:.7}90%{opacity:.4}100%{transform:translateY(-110vh) rotate(360deg);opacity:0}}
+#pw{position:fixed;inset:0;background:linear-gradient(145deg,#1a0808,#2e1010,#1a0808);display:flex;flex-direction:column;align-items:center;justify-content:center;z-index:999;transition:opacity .9s,transform .9s;padding:2rem;text-align:center}
+#pw.out{opacity:0;transform:scale(1.05);pointer-events:none}
+.lock{font-size:3.5rem;margin-bottom:1.2rem;animation:pulse 2s ease-in-out infinite}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.1)}}
+.pt{font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-style:italic;color:#e8c8c8;margin-bottom:.5rem;letter-spacing:2px}
+.ps{font-size:.85rem;color:#a07070;margin-bottom:2.5rem;letter-spacing:1px}
+.pi{background:rgba(255,255,255,.05);border:1px solid rgba(200,160,160,.3);border-radius:50px;padding:.9rem 2rem;font-size:1.6rem;color:#f0dada;text-align:center;outline:none;letter-spacing:6px;width:230px;font-family:'Cormorant Garamond',serif;transition:border .3s,box-shadow .3s;direction:ltr}
+.pi:focus{border-color:var(--rose);box-shadow:0 0 25px rgba(200,160,160,.15)}
+.pb{margin-top:1.2rem;background:linear-gradient(135deg,var(--wine),#c05050);color:#fff;border:none;border-radius:50px;padding:.8rem 2.8rem;font-size:1rem;font-family:'Tajawal',sans-serif;cursor:pointer;letter-spacing:1px;transition:all .3s;display:block;margin-left:auto;margin-right:auto}
+.pb:hover{transform:translateY(-2px);box-shadow:0 8px 25px rgba(139,58,58,.4)}
+.pe{margin-top:1rem;color:#e08080;font-size:.88rem;opacity:0;transition:opacity .3s}
+.pe.show{opacity:1}
+.hint{margin-top:1.8rem;background:transparent;border:1px solid rgba(200,160,160,.2);color:#907070;border-radius:50px;padding:.55rem 1.6rem;font-size:.82rem;font-family:'Tajawal',sans-serif;cursor:pointer;transition:all .3s;text-decoration:none;display:none}
+.hint.on{display:inline-block}
+.hint:hover{background:rgba(200,160,160,.08);color:#e0b0b0}
+#main{display:none;position:relative;z-index:1}
+#main.on{display:block}
+.hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:2rem;background:linear-gradient(180deg,#fdf8f5,#f5e8e8);position:relative}
+.eyebrow{font-size:.75rem;letter-spacing:4px;color:var(--rose);text-transform:uppercase;margin-bottom:1rem;opacity:0;animation:up 1s ease .3s forwards}
+.htitle{font-family:'Cormorant Garamond',serif;font-size:clamp(3.5rem,12vw,7.5rem);font-weight:300;font-style:italic;color:var(--deep);line-height:1;opacity:0;animation:up 1s ease .6s forwards;margin-bottom:.3rem}
+.hname{color:var(--wine)}
+.hdiv{width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--rose),transparent);margin:1.5rem auto;opacity:0;animation:up 1s ease .9s forwards}
+.hsub{font-size:1.1rem;color:var(--wine);letter-spacing:3px;opacity:0;animation:up 1s ease 1.2s forwards;margin-bottom:.8rem}
+.hdate{font-family:'Cormorant Garamond',serif;font-size:.9rem;color:var(--rose);letter-spacing:3px;opacity:0;animation:up 1s ease 1.5s forwards}
+.scroll-h{position:absolute;bottom:2rem;left:50%;transform:translateX(-50%);color:var(--rose);font-size:.75rem;letter-spacing:2px;opacity:0;animation:up 1s ease 2s forwards;display:flex;flex-direction:column;align-items:center;gap:.5rem}
+.arr{animation:bounce 1.5s ease-in-out infinite}
+@keyframes bounce{0%,100%{transform:translateY(0)}50%{transform:translateY(6px)}}
+.wrap{padding:5rem 1.5rem;max-width:680px;margin:0 auto}
+.card{background:#fff;border-radius:20px;padding:2.5rem 2rem;margin-bottom:2rem;box-shadow:0 4px 30px rgba(139,58,58,.06);border:1px solid rgba(200,160,160,.15);opacity:0;transform:translateY(30px);transition:opacity .7s,transform .7s,box-shadow .3s;position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--rose),transparent)}
+.card.in{opacity:1;transform:translateY(0)}
+.card:hover{box-shadow:0 8px 40px rgba(139,58,58,.12)}
+.num{font-family:'Cormorant Garamond',serif;font-size:4rem;color:var(--blush);font-weight:300;line-height:1;margin-bottom:.5rem;display:block}
+.txt{font-size:1.05rem;line-height:2;color:#3a2020;font-weight:300}
+.txt em{color:var(--wine);font-style:normal;font-weight:500}
+.ico{position:absolute;top:1.5rem;left:1.5rem;font-size:1.2rem;opacity:.4}
+.dcard{background:linear-gradient(145deg,#1e0a0a,#2e1010);border-radius:20px;padding:3rem 2rem;margin-bottom:2rem;text-align:center;opacity:0;transform:translateY(30px);transition:opacity .7s,transform .7s;position:relative;overflow:hidden}
+.dcard::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(200,160,160,.1),transparent 70%)}
+.dcard.in{opacity:1;transform:translateY(0)}
+.dnum{font-family:'Cormorant Garamond',serif;font-size:5rem;font-weight:300;color:var(--rose);letter-spacing:4px;display:block;margin-bottom:.5rem}
+.dlbl{font-size:.7rem;letter-spacing:4px;color:#a07070;text-transform:uppercase;margin-bottom:1.5rem}
+.dtxt{font-size:1.05rem;line-height:2;color:#c0a0a0;font-weight:300}
+.dtxt em{color:#e8c0c0;font-style:normal;font-weight:500}
+.pcard{background:#fff;border-radius:20px;padding:3rem 2rem;margin-bottom:2rem;text-align:center;box-shadow:0 4px 30px rgba(139,58,58,.06);border:1px solid rgba(200,160,160,.15);opacity:0;transform:translateY(30px);transition:opacity .7s,transform .7s;position:relative;overflow:hidden}
+.pcard::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.pcard.in{opacity:1;transform:translateY(0)}
+.photo{width:200px;height:200px;border-radius:50%;object-fit:cover;border:4px solid var(--blush);box-shadow:0 8px 30px rgba(139,58,58,.15);margin:0 auto 1.5rem;display:block;outline:2px solid var(--soft);outline-offset:6px}
+.pcap{font-family:'Cormorant Garamond',serif;font-size:.75rem;letter-spacing:3px;color:var(--rose);text-transform:uppercase;margin-bottom:1.5rem}
+.ptxt{font-size:1.05rem;line-height:2;color:#3a2020;font-weight:300}
+.ptxt em{color:var(--wine);font-style:normal;font-weight:500}
+.fsec{padding:3rem 1.5rem 7rem;text-align:center}
+.fcard{max-width:520px;margin:0 auto;background:linear-gradient(145deg,#2e1010,#1a0808);border-radius:24px;padding:4rem 2.5rem;color:#fff;opacity:0;transform:translateY(30px);transition:opacity .7s,transform .7s;position:relative;overflow:hidden}
+.fcard::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(200,160,160,.1),transparent 70%)}
+.fcard.in{opacity:1;transform:translateY(0)}
+.flbl{font-size:.7rem;letter-spacing:4px;color:var(--rose);text-transform:uppercase;margin-bottom:1.5rem}
+.ftitle{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-style:italic;color:#f0dada;margin-bottom:1.5rem;font-weight:300}
+.ftxt{font-size:1rem;line-height:2;color:#c0a0a0;font-weight:300}
+.fsig{margin-top:2rem;font-size:.82rem;letter-spacing:2px;color:#907070}
+.femo{font-size:2rem;margin-top:1.5rem;display:block;animation:pulse 2s ease-in-out infinite}
+@keyframes up{from{opacity:0;transform:translateY(25px)}to{opacity:1;transform:translateY(0)}}
+@media(max-width:480px){.htitle{font-size:3.2rem}.card,.dcard,.pcard{padding:2rem 1.5rem}.dnum{font-size:3.5rem}}
+</style>
+</head>
+<body>
+<div class="floaters" id="floaters"></div>
+
+<div id="pw">
+  <div class="lock">🔒</div>
+  <p class="pt">If you know, you know...</p>
+  <p class="ps">فيه تاريخ مميز.. لو فاكراه هتعرفي 🌹</p>
+  <input class="pi" type="text" id="pin" placeholder="__/__" maxlength="4" autocomplete="off"/>
+  <button class="pb" onclick="check()">افتحي 🤍</button>
+  <div class="pe" id="err">مش الباسورد الصح.. فكري تاني 🌹</div>
+  <a class="hint" id="hint" href="https://www.instagram.com/fawze_74" target="_blank">مش عارفة؟ 👀 ادخلي على انستا وهتفهمي</a>
+</div>
+
+<div id="main">
+  <section class="hero">
+    <p class="eyebrow">✦ لكِ وحدك ✦</p>
+    <h1 class="htitle">Hey, <span class="hname">Jana</span> 🤍</h1>
+    <div class="hdiv"></div>
+    <p class="hsub">🎂 Happy Birthday 🎂</p>
+    <p class="hdate">19 / 5</p>
+    <div class="scroll-h"><span>اسكروللي</span><span class="arr">↓</span></div>
+  </section>
+
+  <div class="wrap">
+    <div class="card" data-d="0"><span class="ico">🤍</span><span class="num">01</span><p class="txt">في ناس بتمشي من حياتنا.. بس <em>أثرها بيفضل</em>.<br>وانتي كنتي من دول.. من اللي بيفضلوا.</p></div>
+    <div class="card" data-d="100"><span class="ico">💬</span><span class="num">02</span><p class="txt">I don't know where to start..<br>اللي أعرفه إن في ناس بتعدي في حياتك وبتسيب بصمة مش سهل تمسحها، <em>وانتي كنتي من دول</em>.</p></div>
+    <div class="card" data-d="150"><span class="ico">👂</span><span class="num">03</span><p class="txt">كنتي الشخص اللي لما حكيتلها أي حاجة، حسيت إنها <em>فاهمة حتى قبل ما أكمل الكلام</em>.<br>ده مش حاجة بتلاقيها في أي حد.</p></div>
+    <div class="card" data-d="200"><span class="ico">✨</span><span class="num">04</span><p class="txt">فيه لحظات صغيرة فاكرها لحد دلوقتي..<br>مش اللحظات الكبيرة.. <em>اللحظات الصغيرة دي اللي مش بتتنسى</em>.</p></div>
+    <div class="card" data-d="250"><span class="ico">🕊️</span><span class="num">05</span><p class="txt">اتفرقنا.. وده كان صعب..<br>بس حتى بعد كل ده، <em>مش قادر أكرهك ولا أتمنالك غير الأحسن</em>.<br>ده مش ضعف، ده لأنك فعلاً استاهلتي.</p></div>
+    <div class="card" data-d="300"><span class="ico">🌙</span><span class="num">06</span><p class="txt">في عيد ميلادك ده، مش قادر أكون جنبك..<br><em>بس قلبي وصل قبلي 🤍</em></p></div>
+    <div class="card" data-d="350"><span class="ico">🌸</span><span class="num">07</span><p class="txt">أتمنالك سنة مليانة <em>ناس بتحبك صح</em>، ولحظات بتضحكي فيها من قلبك، وأحلام بتتحقق واحدة واحدة.</p></div>
+    <div class="card" data-d="400"><span class="ico">💫</span><span class="num">08</span><p class="txt">انتي تستاهلي <em>كل الحاجات الحلوة</em>..<br>حتى لو مش أنا اللي هقدر أديهالك.</p></div>
+
+    <div class="dcard" data-d="450">
+      <span class="dnum">26/8</span>
+      <p class="dlbl">✦ تاريخ مميز ✦</p>
+      <p class="dtxt">التاريخ ده مش بس الباسورد اللي فتح بيه الصفحة دي..<br>ده <em>اليوم اللي اعترفتلك فيه بحبي</em>..<br>اليوم اللي قلت فيه كل اللي كنت بخبيه..<br>وكان ممكن يبقى <em>أجمل يوم في حياتي</em>..<br>ده تاريخ <em>مش هانساه.. حتى لو اتغير كل حاجة تانية 🤍</em></p>
+    </div>
+
+    <div class="pcard" data-d="500">
+      <p class="pcap">✦ من زمان ✦</p>
+      <img class="photo" src="jana-photo.jpg" alt="Jana"/>
+      <p class="ptxt">من يوم ما جيتي الدنيا وانتي <em>بتضوي كل حاجة حواليكي</em>..<br>حتى في الصورة دي وانتي صغيرة،<br>عيونك كانت بتقول إن في حاجة تانية جاية.. 🤍<br>كل سنة وانتي <em>أجمل.. Happy Birthday, Jana</em></p>
+    </div>
+  </div>
+
+  <section class="fsec">
+    <div class="fcard" data-d="550">
+      <p class="flbl">✦ وفي الآخر ✦</p>
+      <p class="ftitle">Happy Birthday,<br>Jana 🎂</p>
+      <p class="ftxt">من حد لسه بيتمنالك<br><strong style="color:#e8c0c0">الخير والأحسن دايماً في حياتك</strong></p>
+      <p class="fsig">— fawze_74 🤍</p>
+      <span class="femo">🤍</span>
+    </div>
+  </section>
+</div>
+
+<script>
+const emojis=['🤍','🎂','✨','🌸','💫','🕊️','🌙','💕','🎉','⭐'];
+const fl=document.getElementById('floaters');
+for(let i=0;i<18;i++){
+  const e=document.createElement('div');
+  e.className='floater';
+  e.textContent=emojis[Math.floor(Math.random()*emojis.length)];
+  e.style.left=Math.random()*100+'%';
+  e.style.animationDuration=(6+Math.random()*10)+'s';
+  e.style.animationDelay=(Math.random()*8)+'s';
+  e.style.fontSize=(1+Math.random()*1.5)+'rem';
+  fl.appendChild(e);
+}
+let tries=0;
+function check(){
+  const v=document.getElementById('pin').value.replace(/\s/g,'');
+  if(v==='26/8'||v==='268'){
+    document.getElementById('pw').classList.add('out');
+    setTimeout(()=>{
+      document.getElementById('pw').style.display='none';
+      document.getElementById('main').classList.add('on');
+    },900);
+  } else {
+    tries++;
+    document.getElementById('err').classList.add('show');
+    document.getElementById('pin').value='';
+    if(tries>=2) document.getElementById('hint').classList.add('on');
+  }
+}
+document.getElementById('pin').addEventListener('keydown',e=>{if(e.key==='Enter')check()});
+document.getElementById('pin').addEventListener('input',function(){
+  let v=this.value.replace(/[^0-9]/g,'');
+  if(v.length>2) v=v.slice(0,2)+'/'+v.slice(2,3);
+  this.value=v;
+});
+const obs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      const d=parseInt(e.target.dataset.d||0);
+      setTimeout(()=>e.target.classList.add('in'),d);
+      obs.unobserve(e.target);
+    }
+  });
+},{threshold:.15});
+document.querySelectorAll('.card,.dcard,.pcard,.fcard').forEach(c=>obs.observe(c));
+</script>
+</body>
+</html>
